@@ -1,0 +1,150 @@
+@import "../../../styles.scss";
+.detalle-producto{
+    .breadcrumb-container{
+        margin-top: 20px;
+        margin-bottom: 10px;
+        a{
+            font-size: 12px;
+            color: $black;
+            transition: 0.3s all ease;
+            &:hover{
+                color:$secondary;
+            }
+        }
+        span{
+            color: darkgray;
+        }
+    }
+    .info-product{
+        .info-title{
+            h1{
+                font-size: 25px;
+                text-transform: uppercase;
+                font-weight: bold;
+            }
+        }
+        .info-price{
+            display: flex;
+            justify-content: space-between;
+            .price{
+                font-size: 22px;
+                font-weight: bold;
+                span{
+                    &.desc{
+                        font-size: 16px;
+                        font-weight: normal;
+                        color: darkgray;
+                        text-decoration: line-through;
+                    }
+                }
+            }
+            .stock{
+                border-radius: 5px;
+                height: 20px;
+                width: 65px;
+                text-align: center;
+                text-transform: uppercase;
+                background: $stock;
+                color: white;
+                font-size: 12px;
+                &.nostock{
+                    background: $nostock;
+                }
+            }
+        }
+        .info-actions{
+            display: flex;
+            @media screen and (max-width:460px){
+                flex-direction: column;
+            }
+            .cantidad{
+                display: flex;
+                .num{
+                    display: flex;
+                    align-items: center;
+                    color: darkgray;
+                }
+                input{
+                    height: 40px;
+                    width: 40px;
+                    border: 1px solid $gray;
+                    margin-left: 5px;
+                    color: darkgray;
+                    font-weight: bold;
+                    text-align: center;
+                    &:focus{
+                        outline: none;
+                        border-color: $secondary;
+                    }
+
+                }
+                button{
+                    height: 40px;
+                    width: 40px;
+                    cursor: pointer;
+                    background: transparent;
+                    border:1px solid $gray;
+                    outline: none;
+                    color: darkgray;
+                    transition: 0.3s all ease;
+                    margin-left: 5px;
+                    &:hover{
+                        background: $secondary;
+                        color: white;
+                    }
+                }
+            }
+            .btn-cart{
+                button{
+                    margin-left: 20px;
+                    height: 40px;
+                    width: 250px;
+                    color: white;
+                    font-weight: bold;
+                    background: $secondary;
+                    outline: none;
+                    border:none;
+                    cursor: pointer;
+                    transition: 0.3s all ease;
+                    &:hover{
+                        background: $blacksecondary;
+                    }
+                    @media screen and (max-width:460px){
+                        // flex-direction: column;
+                        margin-left: 0;
+                        margin-top: 10px;
+
+                    }
+                }
+            }
+        }
+        .info-description{
+            p{
+                font-size: 14px;
+                color:$texto;
+            }
+        }
+        .info-otros{
+            ul{
+                padding: 0;
+                padding-left: 20px;
+                li{
+                    font-size: 14px;
+                    color:$texto;
+                    // color: darkgray;
+                }
+            }
+        }
+
+    }
+    .products-related{
+        hr{
+            border-top:5px solid rgba(0,0,0,.1);
+        }
+    }
+}
+.fb-comments{
+    ._2pi3{
+        margin-right: 100px 100px !important;
+    }
+}

@@ -1,0 +1,28 @@
+<div class="filtros">
+  <div class="filtros-container">
+      <h5>JOYAS Y RELOJES</h5>
+      <hr>
+    <ul>
+        <li>JOYAS Y RELOJES</li>
+        <li>JOYAS Y RELOJES</li>
+        <li>JOYAS Y RELOJES</li>
+        <li>JOYAS Y RELOJES</li>
+    </ul>
+  </div>
+</div>
+
+
+<div class="btn-filter-mobile" (click)="showFilterMenu()">
+    <i class="fa fa-filter" aria-hidden="true"></i>
+</div>
+<div class="container-filter" [ngClass]="{active: filterMobile}">
+    <div class="mobile-filter" [ngClass]="{active: filterMobile}">
+        <!-- mobile -->
+        <ul>
+                <li>JOYAS Y RELOJES</li>
+                <li>JOYAS Y RELOJES</li>
+                <li>JOYAS Y RELOJES</li>
+                <li>JOYAS Y RELOJES</li>
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,61 @@
+/* estilos */
+/* You can add global styles to this file, and also import other style files */
+body {
+  overflow-x: hidden; }
+
+.sb-wrapper.sb-show-icon {
+  cursor: pointer;
+  background: transparent;
+  color: darkgray;
+  border: none;
+  outline: none;
+  height: 40px;
+  width: 40px;
+  border: 2px solid #eaeaea;
+  transition: 0.3s all ease; }
+
+.sb-wrapper.sb-facebook.sb-show-icon:hover {
+  background: #3C5B9B;
+  color: white; }
+
+.sb-wrapper.sb-twitter.sb-show-icon:hover {
+  background: #359BED;
+  color: white; }
+
+.sb-wrapper.sb-google.sb-show-icon:hover {
+  background: #E33729;
+  color: white; }
+
+.ngx-gallery-icon.ngx-gallery-arrow.fa.fa-arrow-circle-right {
+  color: #ffc107; }
+
+.ngx-gallery-icon.ngx-gallery-arrow.fa.fa-arrow-circle-left {
+  color: #ffc107; }
+
+.ngx-gallery-icon.ngx-gallery-close.fa.fa-times-circle {
+  color: #ffc107; }
+
+ngx-gallery {
+  width: 100% !important; }
+
+@media (max-width: 767px) {
+  .container {
+    max-width: none; } }
+
+.categorias .breadcrumb-container {
+  margin-top: 20px;
+  margin-bottom: 10px; }
+
+.categorias .breadcrumb-container a {
+  font-size: 12px;
+  color: #333;
+  transition: 0.3s all ease; }
+
+.categorias .breadcrumb-container a:hover {
+  color: #ffc107; }
+
+.categorias .breadcrumb-container span {
+  color: darkgray; }
+.no-products{
+  min-height: calc(100vh - 300px);
+}

@@ -1,0 +1,41 @@
+<div class="categorias" *ngIf="username">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <div class="breadcrumb-container">
+          <a>{{username}}</a>
+        </div>
+      </div>
+    </div>
+    <div class="no-products" *ngIf="productos.length === 0">
+      <div>No se encontraron productos con este nombre "{{username}}". <i class="fa fa-frown-o" aria-hidden="true"></i>
+      </div>
+    </div>
+    <div class="row" *ngIf="productos.length > 0">
+      <!-- <div class="col-md-3">
+        <filter-component></filter-component>
+      </div> -->
+      <!-- <div class="col-12 col-md-9"> -->
+      <div class="col-12">
+        <div>
+          <h5>{{username}}</h5>
+          <hr>
+        </div>
+        <div class="row">
+          <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let producto of productos | paginate: { itemsPerPage:12, currentPage: p }">
+            <card-product-component [producto]="producto"></card-product-component>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="container">
+        <div *ngIf="productos.length > 0" class="pagination">
+            <pagination-controls (pageChange)="p = $event" previousLabel="Atrás" nextLabel="Siguiente"></pagination-controls>            
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<items-right-component></items-right-component>
+<footer-component></footer-component>

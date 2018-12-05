@@ -1,0 +1,134 @@
+<div class="registro">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>
+          CREA TU CUENTA
+        </h1>
+      </div>
+    </div>
+    <form [formGroup]="formCreate">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="info-personal">
+            <h6>INFORMACION PERSONAL</h6>
+            <div class="item-registro">
+              <label for="">Nombres</label>
+              <input type="text" [formControl]="firstName" [ngClass]="{invalid: firstName.hasError('required') && firstName.touched}">
+              <div class="invalid-input">
+                <div *ngIf="firstName.hasError('required') && firstName.touched">*Este campo es requerido</div>
+              </div>
+            </div>
+            <div class="item-registro">
+              <label for="">Apellidos</label>
+              <input type="text" [formControl]="lastName" [ngClass]="{invalid: lastName.hasError('required') && lastName.touched}">
+              <div class="invalid-input">
+                <div *ngIf="lastName.hasError('required') && lastName.touched">*Este campo es requerido</div>
+              </div>
+            </div>
+            <div class="item-registro">
+              <label for="">Telefono</label>
+              <input type="text" [formControl]="phone" [ngClass]="{invalid: phone.hasError('required') && phone.touched || phone.hasError('invalidPhone') && phone.touched }">
+              <div class="invalid-input">
+                <div *ngIf="phone.hasError('required') && phone.touched">*Este campo es requerido</div>
+                <div *ngIf="phone.hasError('invalidPhone') && phone.touched">*La numero de teléfono es invalido</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h6></h6>
+          <div class="info-cuenta">
+            <h6>INFORMACION DE LA CUENTA</h6>
+            <div class="item-registro">
+              <label for="">Correo electronico</label>
+              <input type="email" [formControl]="email" [ngClass]="{invalid: (email.hasError('required') && email.touched) || (email.hasError('invalidEmail') && email.touched)}">
+              <div class="invalid-input">
+                <div *ngIf="email.hasError('required') && email.touched">*Este campo es requerido</div>
+                <div *ngIf="email.hasError('invalidEmail') && email.touched">*El correo es inválido</div>
+              </div>
+            </div>
+            <div class="item-registro">
+              <label for="">Contraseña</label>
+              <input type="password" [formControl]="password" [ngClass]="{invalid: password.hasError('required') && password.touched}">
+              <div class="invalid-input">
+                <div *ngIf="password.hasError('required') && password.touched">*Este campo es requerido</div>
+              </div>
+            </div>
+            <div class="item-registro">
+              <label for="">Confirmar contraseña</label>
+              <input type="password" [formControl]="repeatPwd" [ngClass]="{invalid: (repeatPwd.hasError('required') && repeatPwd.touched) || ((formCreate.hasError('mismatchedPasswords') && !repeatPwd.hasError('required') ) && repeatPwd.touched)}">
+              <div class="invalid-input">
+                <div *ngIf="repeatPwd.hasError('required') && repeatPwd.touched">*Este campo es requerido</div>
+                <div *ngIf="(formCreate.hasError('mismatchedPasswords') && !repeatPwd.hasError('required') ) && repeatPwd.touched">*Las contraseñas no concuerdan</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <div class="register-actions">
+            <div class="terminos">
+              <input type="checkbox" id="c1" name="cc" [formControl]="check" />
+              <!-- <label for="c1">Check Box 1</label> -->
+              <label for="c1">
+                <span for="c1">
+                  <i class="fa fa-check" aria-hidden="true"></i>
+                </span>
+              </label>
+              <small data-toggle="modal" data-target="#exampleModalLong">Aceptar los terminos y condiciones</small>
+              <!-- <input type="checkbox"> -->
+              <!-- <label for="" data-toggle="modal" data-target="#exampleModalLong">Aceptar los terminos y condiciones</label> -->
+            </div>
+            <div class="btn-registro">
+              <button (click)="submit()">
+                REGISTRAR
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<items-right-component></items-right-component>
+<footer-component></footer-component>
+<!-- Button trigger modal -->
+<!-- Modal -->
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terminos y Condiciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur
+        et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur.
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
+        metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia
+        bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+        dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo
+        odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
+        commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+        dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
+        consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus
+        sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
+        vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+        Crisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" style="color:white">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>

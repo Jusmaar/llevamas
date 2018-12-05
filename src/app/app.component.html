@@ -1,0 +1,135 @@
+<div class="container-page">
+  <div class="page" [ngClass]="{active: menuMobile }">
+    <header class="header">
+      <div class="header-top">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-md-4 col-lg-6">
+              <div class="mensaje">
+                Mensaje de bienvenida!
+              </div>
+            </div>
+            <div class="col-12 col-md-8 col-lg-6 d-none d-md-block">
+              <div class="login" *ngIf="!auth">
+                <a class="login" [routerLink]="'/login'">Ingresar</a>
+              </div>
+              <div class="login" *ngIf="auth">
+                <div class="user" (click)="showUserItems()">{{ 'Bienvenido ' + auth.client.firstName + ' ' }}
+                  <i class="fa fa-sort-desc" aria-hidden="true"></i>
+                </div>
+                <!-- <a class="login" (click)="logout()">Salir</a> -->
+                <div class="login-user" [ngClass]="{active: userItems}">
+                  <a class="login" (click)="logout()">
+                    <i class="fa fa-sign-out" aria-hidden="true"></i>
+                    Salir</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <hr class="header-div">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-2 col-lg-2">
+            <div class="logo">
+              <a [routerLink]="['/']">
+                <img src="../assets/logo.png" alt="">
+              </a>
+            </div>
+          </div>
+          <div class="col-md-8 col-lg-8 d-none d-md-block">
+            <div class="search">
+              <div>
+                <input [(ngModel)]="searchJ" type="text" placeholder="Busca la tienda entera aquí..." #search>
+                <button (click)="searchProduct()">
+                  <i class="fa fa-search" aria-hidden="true"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-2 col-lg-2 div-menu-responsive">
+            <div class="menu-icon d-md-none" (click)="showMenuMobile()">
+              <i class="fa fa-bars" aria-hidden="true"></i>
+            </div>
+            <div class="content-cart d-none d-md-block">
+              <a class="cart" [routerLink]="['/cart']">
+                <div class="icon-cart">
+                  <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+                </div>
+                <div class="info-cart">
+                  <div>
+                    <h6>Carrito</h6>
+                  </div>
+                  <div class="det-info">
+                    {{ cart.length }} item
+                  </div>
+                </div>
+              </a>
+            </div>
+            <div [routerLink]="['/cart']" class="carrito-responsive d-md-none">
+              <div class="cart-resp">
+                <span>{{ cart.length }}</span>
+                <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="d-none d-md-block div-menu-normal" #header>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-3">
+              <div class="menu-left">
+                <div class="menu-title" (click)="showMenu()">
+                  <div class="icon">
+                    <i class="fa fa-bars" aria-hidden="true"></i>
+                  </div>
+                  <div class="title">
+                    Todas las Categorias
+                  </div>
+                </div>
+                <div class="menu-content" [ngStyle]="{'height': menu ? ''+heightMenu+'px' : 0 }">
+                  <ul class="lista-categorias">
+                    <li *ngFor="let categoria of categories">
+                      <a [routerLink]="['/shop/'+categoria.username]" (click)="closeMenu()">
+                        <i *ngIf="categoria.icon" [ngClass]="'fa ' + categoria.icon" aria-hidden="true"></i> &nbsp;{{categoria.name}}</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="offset-md-1 col-md-8">
+              <div class="textos-servicio">
+                <div>Envío gratuito a nivel nacional &nbsp;/ </div>
+                <div> &nbsp; Garantía total &nbsp;/ </div>
+                <div> &nbsp; Línea directa +(01) 323-9880</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+    <div class="body-page">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+
+  <div class="mobile-menu" [ngClass]="{active: menuMobile}">
+    <div class="search-mobile">
+      <input type="text" placeholder="Buscar">
+      <button>
+        <i class="fa fa-search" aria-hidden="true"></i>
+      </button>
+    </div>
+    <ul class="lista-categorias-mobile">
+      <li *ngFor="let categoria of categories">
+        <a [routerLink]="['/shop/'+categoria.username]" (click)="closeMenu()">
+          <i *ngIf="categoria.icon" [ngClass]="'fa ' + categoria.icon" aria-hidden="true"></i> &nbsp;{{categoria.name}}</a>
+      </li>
+    </ul>
+    <a *ngIf="auth" class="logout-mobile" (click)="logoutMobile()">
+      <i class="fa fa-sign-out" aria-hidden="true"></i>
+      Salir</a>
+  </div>
+</div>

@@ -1,0 +1,265 @@
+@import "../../styles.scss";
+
+/* estilos */
+.checkout{
+    margin-bottom: 50px;
+    h1{
+        margin-top: 20px;
+        font-size: 25px;
+    }
+    p{
+        color:$texto;
+    }
+    form{
+        .item-registro{
+            display: flex;
+            flex-direction: column;
+            .invalid-input{
+                color: red;
+                font-size: 12px;
+            }
+            label{
+                font-size: 14px;
+                font-weight: bold;
+                color:$texto;
+            }
+            input{
+                width: 100%;
+                color: darkgray;
+                font-size: 14px;
+                padding:8px 5px;
+                outline: none;
+                border:1px solid $borderInput;
+                &:focus{
+                    border-color: $secondary;
+                    outline: none;
+                }
+                &.invalid{
+                    border:1px solid red;
+                }
+            }
+            &.codigo{
+                
+                input{
+                    padding: 0 5px;
+                    font-size: 25px;
+                    width: 60px;
+                    text-align: center;
+                }
+            }
+            &.fecha{
+                .fecha-input{
+                    display: flex;
+                    align-content: center;
+                    span{
+                        margin-left: 3px;
+                        margin-right: 3px;
+                        line-height: 45px;
+                    }
+                    input{
+                        width: 60px;
+                        font-size: 20px;                    
+                        text-align: center;                    
+                        &.ano{
+                            width: 100px;
+                        }
+                    }
+                }
+                
+            }
+            
+        }
+        .terminos{
+            display: flex;
+            align-content: center;
+            // justify-content: center;
+            padding-top: 10px;
+            input[type="checkbox"] {
+                display:none;
+            }
+            input[type="checkbox"] + label span {
+                display:inline-block;
+                width:19px;
+                height:19px;
+                margin:-10px 4px 0 0;
+                vertical-align:middle;
+                background:transparent;
+                cursor:pointer;
+                border: 1px solid $secondary;
+                color:white;
+                text-align: center;
+                line-height: 17px;
+                transition: 0.2s all ease;
+            }
+            input[type="checkbox"]:checked + label span {
+                background:$secondary;
+                color: white;
+            }
+            small{
+                margin-left: 5px;
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        button{
+            margin-top: 10px;
+            padding: 10px 10px;
+            font-size: 14px;
+            border:none;
+            outline: none;
+            cursor: pointer;
+            background: $secondary;
+            color:white;
+            font-weight: bold;
+        }
+    }
+
+    .resumen-pedido{
+        h6{
+            text-align: center;
+        }
+        display: flex;
+        // align-items: center;
+        justify-content: center;
+        height: 100%;
+        .container-pedido{
+            border:1px solid $borderInput;
+            border-radius: 4px;
+            table{
+                font-size: 12px;
+                a{
+                    color: $secondary;
+
+                } 
+            }
+            
+        }
+    }
+}
+
+
+
+// .metodo-pago{
+//     .container-label{
+//         display: block;
+//         position: relative;
+//         padding-left: 35px;
+//         margin-bottom: 12px;
+//         cursor: pointer;
+//         font-size: 22px;
+//         user-select: none;
+//         input{
+//             position: absolute;
+//             opacity: 0;
+//             cursor: pointer;
+//             &:checked ~ .checkmark:after {
+//                 display: block;
+//             }
+            
+//         }
+//         .checkmark {
+//             position: absolute;
+//             top: 0;
+//             left: 0;
+//             height: 25px;
+//             width: 25px;
+//             background-color: #eee;
+//             border-radius: 50%;
+//             &:after {
+//                 content: "";
+//                 position: absolute;
+//                 display: none;
+//             }
+//         }
+//         &:hover input ~ .checkmark {
+//             background-color: #ccc;
+//         }
+//         &:checked ~ .checkmark {
+//             background-color: #2196F3;
+//         }
+//     }
+// }
+.metodo-pago{
+    display: flex;
+    justify-content: space-around;
+}
+.container-label {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 16px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container-label input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom radio button */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: $secondary;
+    border-radius: 50%;
+}
+
+/* On mouse-over, add a grey background color */
+.container-label input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container-label input:checked ~ .checkmark {
+    background-color: $secondary;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container-label input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the indicator (dot/circle) */
+.container-label .checkmark:after {
+ 	top: 6px;
+	left: 6px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
+}
+
+.tarjeta,.deposito{
+    animation: show 0.8s ease;
+}
+.deposito{
+    h6{
+        font-weight: bold;
+    }
+    small{
+        text-decoration: underline;
+    }
+}
+@keyframes show {
+    from {opacity: 0}
+    to {opacity: 1}
+}

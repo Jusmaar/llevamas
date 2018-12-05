@@ -1,0 +1,94 @@
+@import "../../styles.scss";
+.registro{
+    margin-bottom: 60px;
+    h1{
+        margin-top: 20px;
+        font-size: 25px;
+        // font-weight: bold;
+    }
+    h6{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .item-registro{
+        display: flex;
+        flex-direction: column;
+        .invalid-input{
+            color: red;
+            font-size: 12px;
+        }
+        input{
+            width: 70%;
+            color: darkgray;
+            font-size: 14px;
+            padding:8px 5px;
+            outline: none;
+            border:1px solid $borderInput;
+            &:focus{
+                border-color: $secondary;
+                outline: none;
+            }
+            &.invalid{
+                border:1px solid red;
+            }
+        }
+    }
+    .register-actions{
+        margin-top: 30px;
+        width: 100%;
+        display: flex;
+        // justify-content: center;
+        align-items: center;
+        flex-direction: column;
+        .terminos{
+            display: flex;
+            align-content: center;
+            justify-content: center;
+            
+            input[type="checkbox"] {
+                display:none;
+            }
+            input[type="checkbox"] + label span {
+                display:inline-block;
+                width:19px;
+                height:19px;
+                margin:-10px 4px 0 0;
+                vertical-align:middle;
+                background:transparent;
+                cursor:pointer;
+                border: 1px solid $secondary;
+                color:white;
+                text-align: center;
+                line-height: 17px;
+                transition: 0.2s all ease;
+                // i{
+                //     margin-bottom: 10px;
+                // }
+            }
+            input[type="checkbox"]:checked + label span {
+                background:$secondary;
+                color: white;
+            }
+            small{
+                margin-left: 5px;
+                cursor: pointer;
+                &:hover{
+                    text-decoration: underline;
+                }
+            }
+        }
+        .btn-registro{
+            button{
+                margin-top: 10px;
+                padding: 5px 10px;
+                font-size: 14px;
+                border:none;
+                outline: none;
+                cursor: pointer;
+                background: $secondary;
+                color:white;
+                font-weight: bold;
+            }
+        }
+    }
+}

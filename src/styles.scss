@@ -1,0 +1,145 @@
+/* You can add global styles to this file, and also import other style files */
+// @import '~font-awesome/css/font-awesome.min.css';
+// @import "~@ngx-share/button/styles/share-buttons";
+// @import "~@ngx-share/button/styles/themes/default/default-theme";
+
+$secondary:#ffc107;
+$black:#333;
+$blacksecondary:#444;
+$gray:#eaeaea;
+$stock:#6dbe14;
+$nostock:#dc3545;
+$texto:#222;
+$borderInput:#ddd;
+$pointCarrito:#777;
+body{
+    overflow-x: hidden;
+    &.no-scroll{
+        overflow-y: hidden;
+    }
+}
+.carousel{
+    // z-index: -1
+}
+.carousel-inner{
+    // z-index: -1;
+}
+.carousel-indicators{
+    display: none;
+}
+.carousel-control-next{
+    cursor: pointer;
+    position: absolute;
+    bottom: 40%;
+    top: auto;
+    // right: 0;
+    // z-index: 50;
+    width: 40px;
+    height: 80px;
+    background-color: $secondary;
+}
+.carousel-control-prev{
+    cursor: pointer;    
+    position: absolute;
+    bottom: 40%;
+    top: auto;
+    // right: 0;
+    // z-index: 50;
+    width: 40px;
+    height: 80px;
+    background-color: $secondary;
+}
+.carousel-control-prev:before{
+    text-shadow: none;
+    color: #fff;
+    font: normal normal normal 14px/1 FontAwesome;
+    content: "\F104";
+    font-size: 30px;
+}
+.carousel-control-next:before{
+    text-shadow: none;
+    color: #fff;
+    font: normal normal normal 14px/1 FontAwesome;
+    font-size: 30px;
+    content: "\F105";
+}
+.carousel-control-prev-icon{
+    display: none;
+}
+.carousel-control-next-icon{
+    display: none;
+}
+.sb-wrapper.sb-show-icon{
+    cursor: pointer;
+    background: transparent;
+    color: darkgray;
+    border:none;
+    outline: none;
+    height: 40px;
+    width: 40px;
+    border:2px solid $gray;
+    transition: 0.3s all ease;
+    // border-radius: px;
+}
+.sb-wrapper.sb-facebook.sb-show-icon:hover{
+    // background: red;
+    background: #3C5B9B;
+    color: white;
+}
+.sb-wrapper.sb-twitter.sb-show-icon:hover{
+    // background: red;
+    background: #359BED;
+    color: white;
+}
+.sb-wrapper.sb-google.sb-show-icon:hover{
+    background: #E33729;
+    color: white;
+}
+.ngx-gallery-icon.ngx-gallery-arrow.fa.fa-arrow-circle-right{
+    color: $secondary;
+}
+.ngx-gallery-icon.ngx-gallery-arrow.fa.fa-arrow-circle-left{
+    color: $secondary;
+}
+.ngx-gallery-icon.ngx-gallery-close.fa.fa-times-circle{
+    color:$secondary;
+}
+ngx-gallery{
+    width: 100% !important;
+}
+ngx-gallery-image{
+    position: relative;
+    z-index: 0;
+}
+
+.ngx-gallery-image.ngx-gallery-active.ngx-gallery-clickable{
+    cursor: zoom-in !important;
+}
+
+.swal2-confirm.swal2-styled{
+    background: $secondary !important;
+}
+
+
+@media (max-width: 767px){
+    .container {
+        max-width: none;
+    }
+}
+
+._2pi3{
+    margin-right: 100px 100px !important;
+}
+
+.pagination{
+    margin-top: 50px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    .ngx-pagination{
+        padding-left: 0 !important;
+        .current{
+            background: $secondary !important;
+        }
+    }
+}

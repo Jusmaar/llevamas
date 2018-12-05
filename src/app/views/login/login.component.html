@@ -1,0 +1,51 @@
+<div class="login">
+  <div class="container">
+    <div class="row">
+      <div class="col-12">
+        <h1>
+          INGRESA O CREATE UNA CUENTA
+        </h1>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="nuevos-clientes">
+          <h6>NUEVOS CLIENTES</h6>
+          <p>Al crear una cuenta en nuestra tienda, podrá avanzar más rápidamente en el proceso de compra, almacenar múltiples
+            direcciones de envío, ver y rastrear sus pedidos en su cuenta y más.</p>
+          <!-- <button>CREAR CUENTA</button> -->
+          <a *ngIf="next" [routerLink]="['/registro']" [queryParams]="{next: next}">CREAR CUENTA</a>
+          <a *ngIf="!next" [routerLink]="['/registro']">CREAR CUENTA</a>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="clientes">
+          <h6>CLIENTES REGISTRADOS</h6>
+          <small>Si tiene una cuenta con nosotros, por favor inicie sesión.</small>
+          <form [formGroup]="formCreate">
+            <div class="item-login">
+              <label for="">Correo electronico*</label>
+              <input type="text" [formControl]="email">
+              <div class="invalid-input">
+                <div *ngIf="email.hasError('required') && email.touched">*Este campo es requerido</div>
+                <div *ngIf="email.hasError('invalidEmail') && email.touched">*El correo es inválido</div>
+              </div>
+            </div>
+            <div class="item-login">
+              <label for="">Contraseña*</label>
+              <input type="password" [formControl]="password">
+              <div class="invalid-input">
+                <div *ngIf="password.hasError('required') && password.touched">*Este campo es requerido</div>
+              </div>
+            </div>
+            <button (click)="submit()">
+              INGRESAR
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<items-right-component></items-right-component>
+<footer-component></footer-component>

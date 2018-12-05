@@ -1,0 +1,109 @@
+<!-- <br> -->
+<!-- <header-component></header-component> -->
+<br>
+<div class="home" *ngIf="isBrowser">
+  <!-- <h1 style="background:red;">Home</h1> -->
+
+  <div class="container">
+    <div class="slider">
+      <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let banner of banners">
+          <div class="img-banner" [ngStyle]="{'background':'url('+banner.image+')'}">
+            <div class="banner-container">
+              <div class="title">
+                {{banner.name}}
+              </div>
+              <div class="content">
+                <p>
+                  {{banner.description}}
+                </p>
+              </div>
+              <button [routerLink]="['/producto/'+banner.username]">COMPRAR AHORA</button>
+            </div>
+          </div>
+        </ng-template>
+
+      </ngb-carousel>
+    </div>
+    <br>
+    <div class="home-body" *ngIf="productos.length > 0">
+      <div class="row">
+        <div class="col-12">
+          <h3>NUEVOS PRODUCTOS</h3>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let producto of productos">
+          <card-product-component [producto]="producto"></card-product-component>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3>MAS VENDIDOS</h3>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let producto of productos">
+          <card-product-component [producto]="producto"></card-product-component>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12">
+          <h3>PRODUCTOS DESTACADOS</h3>
+          <hr>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4 col-lg-3" *ngFor="let producto of destacados">
+          <card-product-component [producto]="producto"></card-product-component>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <loading-component></loading-component> -->
+
+<div class="modal-newsletter" *ngIf="modalNews">
+  <div class="newsletter">
+    <div (click)="showModalNews()">
+      <img class="close-modal" src="http://mas1.magikthemes.com/skin/frontend/rwd/linea/images/f-box-close-icon.png"
+        alt="">
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-md-8">
+          <div class="container-news">
+            <h3>INSCRÍBASE AL BOLETÍN</h3>
+            <p>
+              Regístrese en nuestra lista exclusiva de correos electrónicos y sea el primero en conocer promociones
+              especiales, noticias
+              y novedades de diseñadores.</p>
+            <div class="form-news">
+              <form [formGroup]="formCreate">
+                <input type="text" placeholder="Ingresa tu correo" [formControl]="email" [ngClass]="{invalid: (email.hasError('required') && email.touched) || (email.hasError('invalidEmail') && email.touched)}">
+                <button (click)="submit()">SUSCRIBETE</button>
+                <div class="invalid-input">
+                  <div *ngIf="email.hasError('required') && email.touched">*Este campo es requerido</div>
+                  <div *ngIf="email.hasError('invalidEmail') && email.touched">*El correo es inválido</div>
+                </div>
+              </form>
+            </div>
+            <div class="dont-news">
+              <input type="checkbox" name="" id="">
+              <small>
+                No mostrar esta ventana de nuevo</small>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4 d-none d-md-block img-banner">
+          <img src="https://www.jadedeguatemala.com/templates/jadedeguatemala/images/image-none.jpg" class="img-fluid" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<items-right-component></items-right-component>
+<footer-component></footer-component>

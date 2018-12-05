@@ -1,0 +1,14 @@
+<div class="items-left" [ngClass]="{visible: showItems}">
+  <div class="cart">
+    <a [routerLink]="['/cart']" class="cart-icon">
+      <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+    </a>
+    <span [ngClass]="{active: newItem}">{{cart.length}}</span>
+  </div>
+  <div class="search">
+    <button (click)="searchProduct()">
+      <i class="fa fa-search" aria-hidden="true"></i>
+    </button>
+    <input [(ngModel)]="searchA" type="text" placeholder="Buscar..." #search1 >
+  </div>
+</div>

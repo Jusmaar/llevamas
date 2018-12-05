@@ -1,0 +1,58 @@
+@import "../../styles.scss";
+.login{
+    margin-bottom: 100px;
+    h1{
+        margin-top: 20px;
+        font-size: 25px;
+    }
+    h6{
+        margin-top: 20px;
+        font-weight: bold;
+    }
+    .nuevos-clientes{
+        p{
+            font-size: 14px;
+        }
+        a{
+            text-decoration: none;
+            padding: 5px 10px;
+            font-size: 14px;
+            border:none;
+            outline: none;
+            cursor: pointer;
+            background: $secondary;
+            color:white;
+            font-weight: bold;
+        }
+    }
+    .clientes{
+        width: 100%;
+        .item-login{
+            display: flex;
+            flex-direction: column;
+            input{
+                width: 70%;
+                color: darkgray;
+                font-size: 14px;
+                padding:8px 5px;
+                outline: none;
+                border:1px solid $borderInput;
+                &:focus{
+                    border-color: $secondary;
+                    outline: none;
+                }
+            }
+        }
+        button{
+            margin-top: 10px;
+            padding: 5px 10px;
+            font-size: 14px;
+            border:none;
+            outline: none;
+            cursor: pointer;
+            background: $secondary;
+            color:white;
+            font-weight: bold;
+        }
+    }
+}

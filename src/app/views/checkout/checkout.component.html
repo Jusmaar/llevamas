@@ -1,0 +1,209 @@
+<br>
+<div class="checkout">
+  <div class="container">
+    <div class="row">
+      <br>
+      <div class="col-12">
+        <div class="resumen-pedido">
+          <div class="container-pedido">
+            <h6>RESUMEN DEL PEDIDO</h6>
+            <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">PRODUCTO</th>
+                  <th scope="col">CANTIDAD</th>
+                  <th scope="col">SUBTOTAL</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let producto of cart">
+                  <td>{{producto.name}}</td>
+                  <td>
+                    {{producto.cantidad}}
+                  </td>
+                  <td>
+                    <span>S/.</span>{{producto.priceNow*producto.cantidad | fixedTwo}}
+                  </td>
+                </tr>
+              </tbody>
+              <tfoot>
+                <tr>
+                  <th scope="col">
+                    <a [routerLink]="'/cart'">
+                      <i class="fa fa-caret-left" aria-hidden="true"></i>
+                      Ir al carrito</a>
+                  </th>
+                  <td>
+                    <strong>Total</strong>
+                  </td>
+                  <td>
+                    <strong>
+                      <span>S/.</span>
+                      <span>{{total | fixedTwo}}</span>
+                    </strong>
+                  </td>
+                </tr>
+              </tfoot>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- <form action=""> -->
+    <div class="row">
+      <div class="col-12">
+        <h1>REALIZAR PEDIDO</h1>
+        <p>Llena todos los campos para completar tu compra.</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <form [formGroup]="formCreate">
+          <div class="item-registro">
+            <label for="">Provincia</label>
+            <input type="text" [formControl]="provincia" [ngClass]="{invalid: provincia.hasError('required') && provincia.touched}">
+            <div class="invalid-input">
+              <div *ngIf="provincia.hasError('required') && provincia.touched">*Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="item-registro">
+            <label for="">Distrito</label>
+            <input type="text" [formControl]="distrito" [ngClass]="{invalid: distrito.hasError('required') && distrito.touched}">
+            <div class="invalid-input">
+              <div *ngIf="distrito.hasError('required') && distrito.touched">*Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="item-registro">
+            <label for="">Direccion</label>
+            <input type="text" [formControl]="direccion" [ngClass]="{invalid: direccion.hasError('required') && direccion.touched}">
+            <div class="invalid-input">
+              <div *ngIf="direccion.hasError('required') && direccion.touched">*Este campo es requerido</div>
+            </div>
+          </div>
+          <div class="item-registro">
+            <label for="">Correo electronico</label>
+            <input type="email" [formControl]="email" [ngClass]="{invalid: (email.hasError('required') && email.touched) || (email.hasError('invalidEmail') && email.touched) }">
+            <div class="invalid-input">
+              <div *ngIf="email.hasError('required') && email.touched">*Este campo es requerido</div>
+              <div *ngIf="email.hasError('invalidEmail') && email.touched">*El correo es inválido</div>
+            </div>
+          </div>
+          <br>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <form [formGroup]="formCreateCard">
+          <div class="metodo-pago">
+            <label class="container-label">Tarjeta
+              <input type="radio" checked name="radio" value="1" (click)="changeMetodoPago(1)">
+              <span class="checkmark"></span>
+            </label>
+            <label class="container-label">Deposito
+              <input type="radio" name="radio" value="2" (click)="changeMetodoPago(2)">
+              <span class="checkmark"></span>
+            </label>
+          </div>
+          <div *ngIf="metodoPago" class="tarjeta">
+            <div class="item-registro">
+              <label for="">Número de tarjeta</label>
+              <input type="text" minlength=16 maxlength=16 [formControl]="tarjeta" [ngClass]="{invalid: tarjeta.hasError('required') && tarjeta.touched || tarjeta.hasError('invalidCard') && tarjeta.touched} ">
+              <div class="invalid-input">
+                <div *ngIf="tarjeta.hasError('required') && tarjeta.touched">*Este campo es requerido</div>
+                <div *ngIf="tarjeta.hasError('invalidCard') && tarjeta.touched">*La tarjeta es inválida</div>
+              </div>
+            </div>
+            <div class="item-registro codigo">
+              <label for="">Codigo de seguridad</label>
+              <input type="text" minlength=3 maxlength=3 [formControl]="cvv" maxlength="3" [ngClass]="{invalid: cvv.hasError('required') && cvv.touched || cvv.hasError('invalidCvv') && cvv.touched }">
+              <div class="invalid-input">
+                <div *ngIf="cvv.hasError('required') && cvv.touched">*Este campo es requerido</div>
+                <div *ngIf="cvv.hasError('invalidCvv') && cvv.touched">*El cvv es inválido</div>
+              </div>
+            </div>
+            <div class="item-registro fecha">
+              <label for="">Fecha de expiración</label>
+              <div class="fecha-input">
+                <input type="text" minlength=2 maxlength=2 [formControl]="month" placeholder="MM" maxlength="2" [ngClass]="{invalid: month.hasError('required') && month.touched || month.hasError('invalidMonth') && month.touched}">
+                <div class="invalid-input">
+                  <div *ngIf="month.hasError('required') && month.touched">*Este campo es requerido</div>
+                  <div *ngIf="month.hasError('invalidMonth') && month.touched">*El mes es inválido</div>
+                </div>
+                <span> / </span>
+                <input type="text" minlength=4 maxlength=4 [formControl]="year" placeholder="YYYY" maxlength="4" class="ano" [ngClass]="{invalid: year.hasError('required') && year.touched || year.hasError('invalidYear') && month.touched}">
+                <div class="invalid-input">
+                  <div *ngIf="year.hasError('required') && year.touched">*Este campo es requerido</div>
+                  <div *ngIf="year.hasError('invalidYear') && month.touched">*El mes es inválido</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="!metodoPago" class="deposito">
+            <h6>Números de cuenta:</h6>
+            <p>BBVA: 13123-312323-1233</p>
+            <p>BCP: 23834-31243-22933</p>
+            <p>Interbank: 7934-31243-4008</p>
+            <small>Para confirmar tu compra envianos una foto del voucher a nuestro correo:</small>
+            <small>dev37@ventas.pe</small>
+          </div>
+          <div class="terminos">
+            <input type="checkbox" id="c1" name="cc" [formControl]="check" />
+            <label for="c1">
+              <span for="c1">
+                <i class="fa fa-check" aria-hidden="true"></i>
+              </span>
+            </label>
+            <small data-toggle="modal" data-target="#exampleModalLong">Aceptar los terminos y condiciones</small>
+          </div>
+          <button class="btn-block" (click)="comprar()" [disabled]="( metodoPago && !formCreateCard.valid )">
+            <i *ngIf="!loading" class="fa fa-credit-card" aria-hidden="true"></i>
+            <i *ngIf="loading" class="fa fa-spin fa-spinner" aria-hidden="true"></i>
+            {{ loading ? 'Comprando ...' : 'COMPRAR' }}
+          </button>
+        </form>
+      </div>
+    </div>
+    <!-- </form> -->
+
+  </div>
+</div>
+
+<items-right-component></items-right-component>
+<footer-component></footer-component>
+<div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Terminos y Condiciones</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo
+        risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur
+        et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur.
+        Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non
+        metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo odio, dapibus ac facilisis in,
+        egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent commodo cursus magna, vel
+        scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia
+        bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Donec sed odio
+        dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus sit amet fermentum. Cras justo
+        odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Praesent
+        commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus vel augue laoreet rutrum faucibus
+        dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus magna, vel scelerisque nisl
+        consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla. Cras mattis consectetur purus
+        sit amet fermentum. Cras justo odio, dapibus ac facilisis in, egestas eget quam. Morbi leo risus, porta ac consectetur
+        ac, vestibulum at eros. Praesent commodo cursus magna, vel scelerisque nisl consectetur et. Vivamus sagittis lacus
+        vel augue laoreet rutrum faucibus dolor auctor. Aenean lacinia bibendum nulla sed consectetur. Praesent commodo cursus
+        magna, vel scelerisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+        Crisque nisl consectetur et. Donec sed odio dui. Donec ullamcorper nulla non metus auctor fringilla.
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-warning" style="color:white">Aceptar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<loading-component *ngIf="loading" [description]="description"></loading-component>

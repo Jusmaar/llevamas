@@ -1,0 +1,54 @@
+<div class="item-product" *ngIf="producto">
+  <div class="item-img" *ngIf="producto.images.length > 0">
+    <div class="item-img-info" [ngStyle]="{'background':'url('+producto.images[0]+')'}">
+      <a [routerLink]="['/producto/'+producto.username]" >
+        <!-- <img [src]="producto.images[0]" class="img-fluid" alt=""> -->
+      </a>
+    </div>
+    <!-- <div class="items-container">
+      <button>
+        <i class="fa fa-search-plus" aria-hidden="true"></i>
+      </button>
+      <button>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+      </button>
+      <button>
+        <i class="fa fa-star" aria-hidden="true"></i>
+      </button>
+    </div> -->
+  </div>
+  <div class="item-container">
+    <div class="item-info">
+      <div class="item-title">
+        <a [routerLink]="['/producto/'+producto.username]">
+          <!-- {{producto.name}} -->
+          PRODUCTO
+        </a>
+      </div>
+      <!-- <div class="item-rating" *ngIf="producto.rating"> -->
+      <div class="item-rating">
+        <div class="rating-content">
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+          <i class="fa fa-star" aria-hidden="true"></i>
+        </div>
+      </div>
+      <div class="item-content">
+        <div class="item-price">
+          <span *ngIf="producto.priceOld" class="desc">S/{{producto.priceOld | fixedTwo}}</span>
+          <span>S/{{producto.priceNow | fixedTwo}}</span>
+        </div>
+        <div class="item-action">
+          <button (click)="add()" [ngClass]="{active: isAdded}">
+            <span *ngIf="isAdded">
+              <i class="fa fa-check" aria-hidden="true"></i>
+            </span>
+            {{isAdded ? 'Añadido al carrito': 'Agregar al Carrito'}}
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
